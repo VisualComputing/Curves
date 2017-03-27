@@ -25,22 +25,29 @@ function ControlPoint(x, y) {
     };
 }
 
-function ControlPolygon(size) {
+function ControlPolygon(size, showShape) {
     this.points = [];
+    if ((typeof (showShape) === "undefined")) {
+        this.showShape = true;
+    } else {
+        this.showShape = showShape;
+    }
     for (var i = 0; i < size; i++) {
         this.points.push(new ControlPoint());
     }
 
     this.draw = function () {
         push();
-        noStroke();
-        beginShape(TRIANGLE_STRIP)
-        fill(0, 0, 200, 220);
-        for (var index = 0; index < this.points.length; index++) {
-            var p = this.points[index];
-            vertex(p.x, p.y);
+        if (showShape) {
+            noStroke();
+            beginShape(TRIANGLE_STRIP)
+            fill(0, 0, 200, 220);
+            for (var index = 0; index < this.points.length; index++) {
+                var p = this.points[index];
+                vertex(p.x, p.y);
+            }
+            endShape();
         }
-        endShape();
         var previous = null;
         stroke(255, 255, 0);
         strokeWeight(3);
@@ -48,10 +55,17 @@ function ControlPolygon(size) {
             var current = this.points[index];
             current.draw();
             fill(255, 255, 0);
-            text(index + "", current.x, current.y);
-            if (previous !== null) {
-                stroke(255, 0, 0);
-                line(previous.x, previous.y, current.x, current.y);
+            if (showShape) {
+                noStroke();
+                fill(0);
+                text(index + "", current.x, current.y);
+                if (previous !== null) {
+                    stroke(255, 0, 0);
+                    line(previous.x, previous.y, current.x, current.y);
+                }
+            } else {
+                fill(0);
+                text("pk" + index, current.x, current.y);
             }
             previous = current;
         }

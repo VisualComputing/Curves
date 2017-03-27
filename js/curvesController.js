@@ -7,8 +7,10 @@ var grabber = null;
 var drawGridCtrl = true;
 var drawCtrl = true;
 
-var cFit = new CurveFit();
-var cAprox = new CurveAprox();
+var cFit = null;
+var cAprox = null;
+var cHermite = null;
+var isFix = false;
 var poly;
 
 function setup(idx) {
@@ -18,11 +20,14 @@ function setup(idx) {
         var canvas = createCanvas(800, 300);
         canvas.parent('sketch-holder-' + idx);
         textSize(20);
-        smooth();
         drawGridCtrl = true;
         drawCtrl = true;
+        cFit = new CurveFit(4);
+        cAprox = new CurveAprox(7);
+        cHermite = new CurveHermite(4);
         cFit.setup();
         cAprox.setup();
+        cHermite.setup();
     }
 
 }
@@ -47,10 +52,17 @@ function draw() {
     if (drawGridCtrl) {
         drawGrid(10);
     }
-    if (mode == 3) {
-        poly = cFit.poly;
-    } else if (mode == 5) {
-        poly = cAprox.poly;
+    if (cFit === null && cAprox === null && cHermite === null) {
+        return;
+    }
+    if (mode === 3) {
+        if (isFix) {
+            poly = cFit.poly;
+        } else {
+            poly = cAprox.poly;
+        }
+    } else if (mode === 5) {
+        poly = cHermite.poly;
     }
     if (poly) {
         poly.draw();
@@ -65,10 +77,14 @@ function drawMode(mode) {
     stroke(0, 255, 0);
     switch (mode) {
         case 3:
-            cFit.draw();
+            if (isFix) {
+                cFit.draw();
+            } else {
+                cAprox.draw();
+            }
             break;
         case 5:
-            cAprox.draw();
+            cHermite.draw();
             break;
     }
 }
@@ -77,7 +93,7 @@ function drawMode(mode) {
 function keyPressed() {
     if (key === ' ')
     {
-        mode = mode === 3 ? 5 : 3;
+        isFix = !isFix;
     }
     if (key == 'G')
     {
