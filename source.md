@@ -26,7 +26,6 @@ Jean Pierre Charalambos
 H:
 
 # Index
-
  1. Intro<!-- .element: class="fragment" data-fragment-index="1"-->
  2. Cubic natural splines<!-- .element: class="fragment" data-fragment-index="2"-->
  3. Cubic Hermit splines<!-- .element: class="fragment" data-fragment-index="3"-->
@@ -85,7 +84,7 @@ V:
 V:
 
 ## Intro: General notions
-
+<div id="sketch-holder-3"></div>
 <img height="300" src="fig/nociones.png">
 
 1. Curve fits the interpolation<!-- .element: class="fragment" data-fragment-index="1"-->
@@ -203,7 +202,6 @@ Details [here](http://mathworld.wolfram.com/CubicSpline.html)
 H:
 
 ## Cubic Hermit splines
-
 <div class="ulist">
     <img src="fig/splineCub2.jpg" alt="pipeline" width="30%" style="float: right">
     <ul style="width: 30%;">
@@ -306,7 +304,6 @@ V:
 
 The polynomials $H_i(u)$, for $i= 0,1,2,3$, are the Hermite basis functions:
 <!-- .element: class="fragment" data-fragment-index="2"-->
-
 <figure>
     <img height='400' src='fig/hermite_basis.png'/>
     <figcaption>$H_0(u)$ (red), $H_1(u)$ (blue), $H_2(u)$ (green), and $H_3(u)$ (cyan)</figcaption>
@@ -328,7 +325,6 @@ Continuty between curves
 </tr>
 <tr>
 	<td>
-
 <img height="300" src="fig/splineCub3.jpg" style="vertical-align: top;">
 	</td>
 	<td>
@@ -355,7 +351,7 @@ Si $k = 1 \rightarrow C^{1}$
 V:
 
 ## Cubic Hermit splines: Cardinal splines
-
+<div id="sketch-holder-5"></div>
 <img height="300" src="fig/splineCub7.jpg">
 
 if within a Hermite spline we choose $P(0)$, $P(1)$, $P'(0)$ and $P'(1)$ to be:
