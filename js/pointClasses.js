@@ -38,8 +38,8 @@ function ControlPolygon(size, showShape) {
     } else {
         this.showShape = 0;
     }
-    var type = "NORMAL";
     for (var i = 0; i < size; i++) {
+        var type = "NORMAL";
         if (showShape === 2) {
             if (i % 3 === 0) {
                 type = "CENTER";
