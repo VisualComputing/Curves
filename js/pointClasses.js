@@ -1,10 +1,12 @@
 
-function ControlPoint(x, y) {
+function ControlPoint(x, y, index, type) {
     this.radiusX = 20;
     this.radiusY = 20;
     this.position;
     this.x = x;
     this.y = y;
+    this.index = index;
+    this.type = type;
     if ((typeof (x) === "undefined")) {
         this.x = random(this.radiusX, width - this.radiusX);
     }
@@ -13,6 +15,10 @@ function ControlPoint(x, y) {
     }
     this.grabsInput = function (x, y) {
         return(pow((x - this.x), 2) / pow(this.radiusX, 2) + pow((y - this.y), 2) / pow(this.radiusY, 2) <= 1);
+    };
+
+    this.dist = function (p1, p2) {
+        return new PVector(p1.x - p2.x, p1.y - p2.y);
     };
 
     this.draw = function () {
@@ -28,17 +34,33 @@ function ControlPoint(x, y) {
 function ControlPolygon(size, showShape) {
     this.points = [];
     if ((typeof (showShape) === "undefined")) {
-        this.showShape = true;
+        this.showShape = 1;
     } else {
-        this.showShape = showShape;
+        this.showShape = 0;
     }
+    var type = "NORMAL";
     for (var i = 0; i < size; i++) {
-        this.points.push(new ControlPoint());
+        if (showShape === 2) {
+            if (i % 3 === 0) {
+                type = "CENTER";
+            }
+            if (i % 3 === 2 && i - 2 >= 0 && i + 2 < size) {
+                type = "LEFT";
+            }
+            if (i % 3 === 1 && i - 2 >= 0 && i + 1 < size) {
+                type = "RIGHT";
+            }
+        }
+        this.points.push(new ControlPoint(
+                undefined
+                , undefined
+                , i
+                , type));
     }
 
     this.draw = function () {
         push();
-        if (showShape) {
+        if (showShape === 1) {
             noStroke();
             beginShape(TRIANGLE_STRIP)
             fill(0, 0, 200, 220);
@@ -55,7 +77,7 @@ function ControlPolygon(size, showShape) {
             var current = this.points[index];
             current.draw();
             fill(255, 255, 0);
-            if (showShape) {
+            if (showShape !== 0) {
                 noStroke();
                 fill(0);
                 text(index + "", current.x, current.y);

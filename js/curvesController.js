@@ -4,12 +4,14 @@
 var mode = 0;
 
 var grabber = null;
+var tGrabber = null;
 var drawGridCtrl = true;
 var drawCtrl = true;
 
 var cFit = null;
 var cAprox = null;
 var cHermite = null;
+var cBezier = null;
 var isFix = false;
 var poly;
 
@@ -23,11 +25,13 @@ function setup(idx) {
         drawGridCtrl = true;
         drawCtrl = true;
         cFit = new CurveFit(4);
-        cAprox = new CurveAprox(7);
+        cAprox = new CurveAprox(4);
         cHermite = new CurveHermite(4);
+        cBezier = new CurveBezier(7);
         cFit.setup();
         cAprox.setup();
         cHermite.setup();
+        cBezier.setup();
     }
 
 }
@@ -63,6 +67,8 @@ function draw() {
         }
     } else if (mode === 5) {
         poly = cHermite.poly;
+    } else if (mode === 6) {
+        poly = cBezier.poly;
     }
     if (poly) {
         poly.draw();
@@ -85,6 +91,9 @@ function drawMode(mode) {
             break;
         case 5:
             cHermite.draw();
+            break;
+        case 6:
+            cBezier.draw();
             break;
     }
 }
@@ -115,18 +124,54 @@ function mousePressed() {
                 }
             }
         }
+        if (mode === 5) {
+            for (var i = 0; i < cHermite.cPoints.length; i++) {
+                var p = cHermite.cPoints[i];
+                if (tGrabber === null) {
+                    if (p.grabsInput(mouseX, mouseY)) {
+                        tGrabber = p;
+                    }
+                }
+            }
+        }
     } else {
         grabber = null;
+        tGrabber = null;
     }
 }
 
 function mouseDragged() {
-    if (grabber != null) {
+    if (grabber !== null) {
+        switch (grabber.type) {
+            case "CENTER":
+                break;
+            case "LEFT":
+                var right = poly.points[grabber.index + 2];
+                var center = poly.points[grabber.index + 1];
+                var dir = center.dist(grabber, center);
+                var newR = dir.add(center, dir.mult(dir, -1));
+                right.x = newR.x;
+                right.y = newR.y;
+                break;
+            case "RIGHT":
+                var left = poly.points[grabber.index - 2];
+                var center = poly.points[grabber.index - 1];
+                var dir = center.dist(grabber, center);
+                var newL = dir.add(center, dir.mult(dir, -1));
+                left.x = newL.x;
+                left.y = newL.y;
+                break;
+        }
         grabber.x = mouseX;
         grabber.y = mouseY;
+    }
+    if (tGrabber !== null) {
+        tGrabber.x = mouseX;
+        tGrabber.y = mouseY;
     }
 }
 
 function mouseReleased() {
     grabber = null;
+    tGrabber = null;
 }

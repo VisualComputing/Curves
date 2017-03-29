@@ -3,7 +3,7 @@ function CurveAprox(size) {
     this.poly = new ControlPolygon(size);
     this.consts = getPascalTriangle(size);
     this.setup = function () {
-        this.poly = new ControlPolygon(this.size, true);
+        this.poly = new ControlPolygon(this.size, 1);
         this.consts = getPascalTriangle(this.size);
     };
     this.draw = function () {
@@ -23,21 +23,10 @@ function CurveAprox(size) {
             }
             prev = result;
         }
-//        var current,next,next2,prev;
-//        prev=this.poly.points[0];
-//        for (var i = 1; i < this.poly.points.length - 2; i += 3) {
-//            current = this.poly.points[i];
-//            next = this.poly.points[i + 1];
-//            next2 = this.poly.points[i + 2];
-//            bezier(prev.x, prev.y, current.x, current.y, next.x, next.y, next2.x, next2.y);
-//            prev = next2;
-//        }
     };
 
 }
 
-//test 6:     1  5 10 10 5 1 
-//test 7:  [1, 6, 15, 20, 15, 6, 1]
 function getPascalTriangle(size) {
     if (size <= 1) {
         return [1];

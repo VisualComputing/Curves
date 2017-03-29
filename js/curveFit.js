@@ -1,7 +1,7 @@
 function CurveFit(size) {
     this.poly = null;
     this.setup = function () {
-        this.poly = new ControlPolygon(size,true);
+        this.poly = new ControlPolygon(size,0);
     };
     this.draw = function () {
         beginShape();

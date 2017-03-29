@@ -458,7 +458,7 @@ Joining Bézier segments
 > Property 3: The start and end of the curve is tangental to the start and end section of the control polygon
 
 Example for $(G^{0}, G^{1} and) C^{1}$ continuity
-
+<div id="sketch-holder-6"></div>
 <img height="300" src="fig/curSupBez1.jpg">
 <!-- .element: class="fragment" data-fragment-index="1"-->
 
