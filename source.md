@@ -84,7 +84,7 @@ V:
 V:
 
 ## Intro: General notions
-<div id="sketch-holder-3"></div>
+
 <img height="300" src="fig/nociones.png">
 
 1. Curve fits the interpolation<!-- .element: class="fragment" data-fragment-index="1"-->
@@ -351,7 +351,7 @@ Si $k = 1 \rightarrow C^{1}$
 V:
 
 ## Cubic Hermit splines: Cardinal splines
-<div id="sketch-holder-5"></div>
+
 <img height="300" src="fig/splineCub7.jpg">
 
 if within a Hermite spline we choose $P(0)$, $P(1)$, $P'(0)$ and $P'(1)$ to be:
@@ -458,7 +458,6 @@ Joining Bézier segments
 > Property 3: The start and end of the curve is tangental to the start and end section of the control polygon
 
 Example for $(G^{0}, G^{1} and) C^{1}$ continuity
-<div id="sketch-holder-6"></div>
 <img height="300" src="fig/curSupBez1.jpg">
 <!-- .element: class="fragment" data-fragment-index="1"-->
 
