@@ -33,7 +33,58 @@ H:
  
 H:
 
-## Intro: idea
+## Intro: parametric curves (splines)
+### [Idea](https://www.scratchapixel.com/lessons/advanced-rendering/bezier-curve-rendering-utah-teapot)
+
+<figure>
+    <img height='400' src='fig/beziercurve.png'/>
+    <figcaption>Example: Bezier curve defined from $0 \leq u \leq 1$</figcaption>
+</figure>
+
+V:
+
+## Intro: splines
+### [Rendering](https://www.scratchapixel.com/lessons/advanced-rendering/bezier-curve-rendering-utah-teapot)
+
+<figure>
+    <img height='400' src='fig/beziercurve1.png'/>
+    <figcaption>Join line segments using a $\Delta u$ over $[0..1]$</figcaption>
+</figure>
+
+V:
+
+## Intro: splines surfaces
+### [Formulation](https://www.scratchapixel.com/lessons/advanced-rendering/bezier-curve-rendering-utah-teapot/bezier-surface)
+
+<figure>
+    <img height='400' src='fig/beziersurface.png'/>
+    <figcaption>A Bézier patch and its 16 control points</figcaption>
+</figure>
+
+V:
+
+## Intro: splines surfaces
+### [Rendering](https://www.scratchapixel.com/lessons/advanced-rendering/bezier-curve-rendering-utah-teapot/bezier-surface)
+
+<figure>
+    <img height='400' src='fig/beziersurface1.gif'/>
+    <figcaption>Computing the point $(u, v)$ on the Bézier surface</figcaption>
+</figure>
+
+V:
+
+## Intro: splines surfaces
+### [Rendering](https://www.scratchapixel.com/lessons/advanced-rendering/bezier-curve-rendering-utah-teapot/bezier-surface)
+
+<figure>
+    <img height='400' src='fig/teapotrender.png'/>
+    <figcaption>Example</figcaption>
+</figure>
+
+V:
+
+## Intro: splines
+### Formulation
 
 > Find the piecewise interpolation polynomial(s) of degree $n$ (`$P(u) = c_nu^{n} + c_{n-1}u^{n-1} + ... + c_1u + c_0u^{0}$`) that best approximate a given a set of _control points_
 
