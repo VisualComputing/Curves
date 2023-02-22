@@ -21,7 +21,8 @@ H:
 
 # Curves
 
-Jean Pierre Charalambos
+Jean Pierre Charalambos  
+Universidad Nacional de Colombia
 
 H:
 
