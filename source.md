@@ -448,13 +448,13 @@ H:
 
 ## Bézier curves: De Casteljau algorithm
 
-Check this [video](http://www.youtube.com/embed/YATikPP2q70)
+Check this [video](https://www.youtube.com/embed/YATikPP2q70)
 
 V:
 
 ## Bézier curves: overview
 
-Check also this [one](http://www.youtube.com/embed/2HvH9cmHbG4)
+Check also this [one](https://www.youtube.com/embed/2HvH9cmHbG4)
 
 V:
 
