@@ -574,9 +574,3 @@ H:
 	* [Apache commons math](http://commons.apache.org/proper/commons-math/)
 	* [Matrix](http://introcs.cs.princeton.edu/java/95linear/Matrix.java.html)
 	* [Papaya library](http://adilapapaya.com/papayastatistics/)
-
-H:
-
-## Credits
-
-* Jean Pierre Alfonso, for the initial draft of the presentation which included the [mathjax](https://www.mathjax.org/) formulas
